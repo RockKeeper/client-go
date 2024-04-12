@@ -1,4 +1,4 @@
-module github.com/RockKeeper/client-go
+module github.com/RockKeeper/dependency-track-client-go
 
 go 1.19
 
