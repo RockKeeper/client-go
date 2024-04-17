@@ -80,7 +80,7 @@ func (ps ProjectService) GetProjectsForName(ctx context.Context, name string, ex
 }
 
 func (ps ProjectService) GetChildrenOf(ctx context.Context, projectUUID uuid.UUID) (p []Project, err error) {
-	req, err := ps.client.newRequest(ctx, http.MethodDelete, fmt.Sprintf("/api/v1/project/%s/children", projectUUID))
+	req, err := ps.client.newRequest(ctx, http.MethodDelete, fmt.Sprintf("/api/v1/project/%s/children", projectUUID.String()))
 	if err != nil {
 		return
 	}
