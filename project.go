@@ -79,6 +79,16 @@ func (ps ProjectService) GetProjectsForName(ctx context.Context, name string, ex
 	return
 }
 
+func (ps ProjectService) GetChildrenOf(ctx context.Context, projectUUID uuid.UUID) (p []Project, err error) {
+	req, err := ps.client.newRequest(ctx, http.MethodDelete, fmt.Sprintf("/api/v1/project/%s/children", projectUUID))
+	if err != nil {
+		return
+	}
+
+	_, err = ps.client.doRequest(req, nil)
+	return
+}
+
 func (ps ProjectService) Create(ctx context.Context, project Project) (p Project, err error) {
 	req, err := ps.client.newRequest(ctx, http.MethodPut, "/api/v1/project", withBody(project))
 	if err != nil {
