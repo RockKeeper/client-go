@@ -85,7 +85,7 @@ func (ps ProjectService) GetChildrenOf(ctx context.Context, projectUUID uuid.UUI
 		return
 	}
 
-	_, err = ps.client.doRequest(req, nil)
+	_, err = ps.client.doRequest(req, &p)
 	return
 }
 
